@@ -35,13 +35,13 @@
 R0 = 1e-4;                                         % Radius of cylinder in [m]
 Z0 = 10e-4;                                        % Length of cylinder in [m]
 v0 = 0.5e-4;                                       % Flow velocity in [m/s]
-D = 2.5e-10;                                          % Diffusion coefficient in [m^2/s]
+D = 12.5e-13;                                          % Diffusion coefficient in [m^2/s]
 
 [diff] = cylinder_parameters(R0, Z0, D, v0);
 
-N = 21;                                            % Number of Bessel functions N, n = 0, ..., N 
+N = 1;                                            % Number of Bessel functions N, n = 0, ..., N 
 M = 30;                                            % Number of roots M, M = 0, ..., M-1
-L = 100;                                           % Number of wavenumbers L, \nu = 0, ..., L-1
+L = 200;                                           % Number of wavenumbers L, \nu = 0, ..., L-1
 
 tdur = diff.Z0_/diff.v0_;                          % simulation duration 
 tdur_norm = (tdur/diff.tau);                       % normalized simulation duration
@@ -108,11 +108,11 @@ clear state.As_vr
 % 'pointSingle': A Single point at a certain position 
 % 'circularSingle': A single circular disk - uniform for r0 = R_0
 
-initial_state = 'pointSingle'; 
-excite.pos = [0.5, pi/2, 5, 0.4, pi/4, 0.4];       % [r_e, phi_e, z_e, r0, phi0, z0]
+% initial_state = 'pointSingle'; 
+% excite.pos = [0.5, pi/2, 5, 0.4, pi/4, 0.4];       % [r_e, phi_e, z_e, r0, phi0, z0]
 
-% initial_state = 'circularSingle';
-% excite.pos = [0, pi/2, 1, 1*diff.R0, 0.3];        % [r_e, phi_e, z_e, r0, z0]
+initial_state = 'circularSingle';
+excite.pos = [0, pi/2, 1, 1*diff.R0, 0.3];        % [r_e, phi_e, z_e, r0, z0]
 
 % initial_state = 'impulseSingle';
 % excite.pos = [0, pi/2, 4];        % [r_e, phi_e, z_e]
@@ -157,7 +157,7 @@ clear excite.yi excite.fe excite.fe_x excite.fe_t
 
 %% Numerical evaluation of output Equation
 
-pickup.pos = [0.5, pi/2, 6];
+pickup.pos = [0, pi/2, 2];
 pout = output(ybar, ftm, pickup, sim);
 
 % give current regime 
