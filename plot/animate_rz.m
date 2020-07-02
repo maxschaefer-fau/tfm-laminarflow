@@ -37,10 +37,10 @@ set(gca,'fontsize',18)
 zlim([0 1e9]);
 xlabel('Space $[z]$','interpreter','latex');
 ylabel('Space $[y]$','interpreter','latex');
-yticks([-1 -0.5 0 0.5 1])
-yticklabels({'$-R_0$','$-\frac{R_0}{2}$','$0$','$\frac{R_0}{2}$','$R_0$'})
+% yticks([-1 -0.5 0 0.5 1])
+% yticklabels({'$-R_0$','$-\frac{R_0}{2}$','$0$','$\frac{R_0}{2}$','$R_0$'})
 view([0 90]);
-set(gca,'DataAspectRatio',[3 2 1])
+set(gca,'DataAspectRatio',[3 0.4 1])
 shading interp;
 nv = 0;
 for k = 1:downsample:length(sim.t)    

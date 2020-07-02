@@ -30,7 +30,7 @@ function fe_t = temporalPulse(excite_state_temp, diff, ftm, sim)
 switch excite_state_temp 
     
     case 'zero'
-        fe_t = zeros(ftm.M*ftm.Nu, sim.len); 
+        fe_t = zeros(ftm.M*ftm.Nu, length(sim.t)); 
         t0 = 0; 
         tr = 0;
     case 'dirac'

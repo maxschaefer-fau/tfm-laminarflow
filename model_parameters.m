@@ -45,7 +45,7 @@ ftm.Mu = ftm.N*ftm.M*ftm.Nu;                % Total number of eigenvalues (also 
 % Arrays of indices 
 ftm.nu = 0:ftm.Nu - 1;                      % All indices nu = 0:Nu-1
 ftm.m = 1:ftm.M;                            % All indices m = 1:M
-ftm.n = 0:ftm.N;                            % All indices n = 0:N-1
+ftm.n = 0:ftm.N-1;                            % All indices n = 0:N-1
 
 % Index all eigenvalues -- Not necessary
 ftm.mu = 1:ftm.Mu;                          % All indies mu = 1:Mu

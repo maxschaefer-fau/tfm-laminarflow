@@ -32,16 +32,16 @@
 % May 2020; Last revision: 28. June 2020
 
 %% Basic definitions
-R0 = 1e-4;                                         % Radius of cylinder in [m]
-Z0 = 10e-4;                                        % Length of cylinder in [m]
-v0 = 0.5e-4;                                       % Flow velocity in [m/s]
-D = 12.5e-13;                                          % Diffusion coefficient in [m^2/s]
+R0 = 0.02;                                         % Radius of cylinder in [m]
+Z0 = 2.4;                                        % Length of cylinder in [m]
+v0 = 0.053;                                       % Flow velocity in [m/s]
+D = 7.8e-6;                                          % Diffusion coefficient in [m^2/s]
 
 [diff] = cylinder_parameters(R0, Z0, D, v0);
 
 N = 1;                                            % Number of Bessel functions N, n = 0, ..., N 
-M = 30;                                            % Number of roots M, M = 0, ..., M-1
-L = 200;                                           % Number of wavenumbers L, \nu = 0, ..., L-1
+M = 15;                                            % Number of roots M, M = 0, ..., M-1
+L = 400;                                           % Number of wavenumbers L, \nu = 0, ..., L-1
 
 tdur = diff.Z0_/diff.v0_;                          % simulation duration 
 tdur_norm = (tdur/diff.tau);                       % normalized simulation duration
@@ -111,11 +111,11 @@ clear state.As_vr
 % initial_state = 'pointSingle'; 
 % excite.pos = [0.5, pi/2, 5, 0.4, pi/4, 0.4];       % [r_e, phi_e, z_e, r0, phi0, z0]
 
-initial_state = 'circularSingle';
-excite.pos = [0, pi/2, 1, 1*diff.R0, 0.3];        % [r_e, phi_e, z_e, r0, z0]
+% initial_state = 'circularSingle';
+% excite.pos = [0, pi/2, 5, 1*diff.R0, 0.3];        % [r_e, phi_e, z_e, r0, z0]
 
-% initial_state = 'impulseSingle';
-% excite.pos = [0, pi/2, 4];        % [r_e, phi_e, z_e]
+initial_state = 'impulse';
+excite.pos = [0, pi/2, 5];        % [r_e, phi_e, z_e]
 
 [excite.yi, excite.norm_yi] = spatialPulse(initial_state, ftm, excite.pos);
 
@@ -157,7 +157,7 @@ clear excite.yi excite.fe excite.fe_x excite.fe_t
 
 %% Numerical evaluation of output Equation
 
-pickup.pos = [0, pi/2, 2];
+pickup.pos = [0, pi/2, 105];
 pout = output(ybar, ftm, pickup, sim);
 
 % give current regime 
@@ -166,13 +166,12 @@ ad = dimensional_analysis(diff, pickup.pos(3), excite.pos(3));
 % normalization factor. 
 % Also dependening on receiver from particle based simulations 
 % Here for cuboid V_cube = 0.04^3
-pickup.norm = 0.04^3;
+pickup.norm = 0.006^3;
 normalize = (excite.norm_yi{1})/pickup.norm*sim.T; 
 
 pout = real(pout)/normalize;
 
-figure
-plot(sim.t*diff.tau, pout); grid on; hold on; 
+% plot(sim.t*diff.tau, pout); grid on; hold on; 
 return 
 %% Spatial - r,z 
 % Derive a 3D output matrix for 2D plotting over y-z plane
@@ -184,5 +183,5 @@ for n = 1:ftm.N
     [C_rz{n}, r_rz, phi_rz, z_rz] = spatialMatrix_rz(n, ftm.indexC{n}, ftm, ...
         diff, R, PHI, Z);
 end
-figure; plot2D_rz(r_rz, z_rz, C_rz, ybar,1,ftm)
-animate_rz(r_rz, z_rz, C_rz, ybar, 10, ftm, sim)
+% figure; plot2D_rz(r_rz, z_rz, C_rz, ybar,1,ftm)
+% animate_rz(r_rz, z_rz, C_rz, ybar, 10, ftm, sim)
