@@ -16,6 +16,10 @@ Last update:    29.06.2020
 
 The Matlab code is updated and extended regularly. 
 
+# How to use? 
+
+- Use the "startup" script to set all necessary paths 
+- Parameters are defined in "main.m" 
 
 
 # known issues
