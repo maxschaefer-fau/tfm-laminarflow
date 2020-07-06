@@ -2,7 +2,7 @@
 
 The Matlab code is associated with the publications: 
 
-M. Schaefer, W. Wicke, L. Brand, R. Rabenstein and R. Schober, “Transfer Function Models for Diffusion and Laminar Flow in Cylindrical Systems”, submitted to IEEE Transactions on Molecular, Biological and Multi-scale Communications, 2020, [online]: …
+M. Schaefer, W. Wicke, L. Brand, R. Rabenstein and R. Schober, “Transfer Function Models for Diffusion and Laminar Flow in Cylindrical Systems”, submitted to IEEE Transactions on Molecular, Biological and Multi-scale Communications, 2020, [online]: https://arxiv.org/abs/2007.01799
 
 Further information regarding the implementation can be found on: 
 maximilianschaefer.org/publication/tfm-laminar

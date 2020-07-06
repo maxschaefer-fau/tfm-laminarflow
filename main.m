@@ -2,10 +2,10 @@
 % main function for the numerical evaluation of the proposed model for
 % advection-diffusion in a cylinder with laminar flow based on: 
 % 
-% M. Sch‰fer, W. Wicke, L. Brand, R. Rabenstein and R. Schober, ?Transfer 
+% M. Schäfer, W. Wicke, L. Brand, R. Rabenstein and R. Schober, ?Transfer 
 %   Function Models for Diffusion and Laminar Flow in Cylindrical Systems?, 
 %   submitted to IEEE Trans. Molecular, Biological and Multi-scale Commun., 
-%   2020, [online]: ?
+%   2020, [online]: https://arxiv.org/abs/2007.01799
 %
 % Further information regarding the implementation can be found on: 
 %   maximilianschaefer.org/publication/tfm-laminar
